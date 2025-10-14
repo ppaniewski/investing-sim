@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     },
     portfolio: {
         type: [{
-            ticker: {
+            symbol: {
                 type: String,
                 required: true,
                 unique: true

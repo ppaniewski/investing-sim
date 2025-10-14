@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectMongoDB from './config/dbConnect.js';
+import startAgenda from './agenda/index.js';
 import errorHandler from './middleware/errorHandler.js';
 import userRoutes from './routes/userRoutes.js';
 
@@ -19,5 +20,7 @@ app.use(cookieParser());
 app.use("/api/users", userRoutes);
 
 app.use(errorHandler);
+
+startAgenda();
 
 export default app;

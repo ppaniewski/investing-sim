@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
 import { MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH, MIN_USERNAME_LENGTH, MAX_USERNAME_LENGTH, STARTING_CASH, JWT_EXPIRATION_TIME } from '../constants.js';
 
-// @route POST /api/users
+// @route POST /api/users/register
 export const registerUser = asyncHandler(async (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) {
