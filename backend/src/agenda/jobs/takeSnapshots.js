@@ -33,11 +33,11 @@ const takeSnapshots = async () => {
             snapshot.stocks.push({
                 symbol: stock.symbol,
                 price: stockReference.price,
-                amount: stock.amount
+                shares: stock.shares
             });
 
             // Add stock value to total
-            totalValue += stock.amount * stockReference.price;
+            totalValue += stock.shares * stockReference.price;
         }
 
         snapshot.totalValue = totalValue;
