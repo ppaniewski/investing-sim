@@ -13,7 +13,7 @@ const startAgenda = async () => {
 
     // Run jobs
     agenda.every("30 minutes", "updateStockPrices");
-    agenda.every("60 minutes", "takePortfolioSnapshots");
+    agenda.every("3 hours", "takePortfolioSnapshots");
 
     process.on("SIGTERM", () => graceful(agenda));
     process.on("SIGINT", () => graceful(agenda));

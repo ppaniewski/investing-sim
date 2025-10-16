@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
                 required: true,
                 unique: true
             },
-            amount: {
+            shares: {
                 type: Number,
                 required: true
             }

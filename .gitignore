@@ -4,6 +4,7 @@ dist
 dist-ssr
 *.local
 *.log
+logs
 npm-debug.log*
 .vscode/*
 *.txt

@@ -12,7 +12,7 @@ const snapshotSchema = new mongoose.Schema({
                 type: Number,
                 required: true
             },
-            amount: {
+            shares: {
                 type: Number,
                 required: true
             }
