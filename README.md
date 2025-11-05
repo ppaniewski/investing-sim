@@ -26,3 +26,13 @@ A stock market investing simulator with real-time data and automated portfolio t
 **Frontend** - React, ChakraUI, Vite
 
 **Backend** - Node.js, Express, MongoDB
+
+## Data & Assets
+**Stock Data APIs**:
+- [Stooq](https://stooq.com)
+- [Tiingo](https://www.tiingo.com)
+- [NasdaqScreener](https://www.nasdaq.com/market-activity/stocks/screener)
+
+**Stock Icons**
+- [https://cdn.jsdelivr.net/gh/nvstly/icons@main/ticker_icons](https://cdn.jsdelivr.net/gh/nvstly/icons@main/ticker_icons)
+- [https://cdn.jsdelivr.net/gh/davidepalazzo/ticker-logos@main/ticker_icons](https://cdn.jsdelivr.net/gh/davidepalazzo/ticker-logos@main/ticker_icons)
