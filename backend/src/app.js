@@ -11,7 +11,7 @@ import stockRoutes from './routes/stockRoutes.js';
 const app = express();
 
 dotenv.config();
-connectMongoDB();
+await connectMongoDB();
 
 // Middleware
 app.use(express.json());

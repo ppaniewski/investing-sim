@@ -14,7 +14,11 @@ const stockSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    marketCap: {
+    openPrice: { // Price at the start of the trading day
+        type: Number,
+        required: true
+    },
+    volume: { // In shares traded
         type: Number
     }
 });

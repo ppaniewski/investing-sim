@@ -3,12 +3,10 @@ import mongoose from 'mongoose';
 async function connectMongoDB() {
     try {
         const connect = await mongoose.connect(process.env.DB_CONNECTION_STRING);
-        if (process.env.NODE_ENV === "development") {
-            console.log(`MongoDB connected: ${connect.connection.host}`);
-        }
+        console.log(`MongoDB connected: ${connect.connection.host}`);
     }
     catch (err) {
-        console.log(err);
+        console.error(err);
         process.exit(1);
     }
 }

@@ -7,8 +7,8 @@ const router = express.Router();
 router.post("/login", loginUser);
 router.post("/register", registerUser);
 
-// Require auth before logout
 router.use(verifyToken);
 router.post("/logout", logoutUser);
+router.get("/authenticate", (req, res) => res.status(200).json({ message: "OK" }));
 
 export default router;

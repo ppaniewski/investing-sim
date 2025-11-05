@@ -2,7 +2,8 @@ import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
-import { MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH, MIN_USERNAME_LENGTH, MAX_USERNAME_LENGTH, STARTING_CASH, JWT_EXPIRATION_TIME } from '../constants.js';
+import SnapshotList from '../models/snapshotListModel.js';
+import { MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH, MIN_USERNAME_LENGTH, MAX_USERNAME_LENGTH, STARTING_CASH, JWT_EXPIRATION_TIME, MAX_COOKIE_AGE } from '../constants.js';
 
 // @route POST /api/users/register
 export const registerUser = asyncHandler(async (req, res) => {
@@ -36,7 +37,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     }
 
     // Hash password
-    const hashedPassword = bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
         username,
@@ -44,6 +45,9 @@ export const registerUser = asyncHandler(async (req, res) => {
         portfolio: [],
         availableCash: STARTING_CASH
     });
+
+    // Make a portfolio snapshot list tied to the user
+    await createInitialSnapshot(user);
 
     res.status(201).json({
         id: user._id,
@@ -71,7 +75,7 @@ export const loginUser = asyncHandler(async (req, res) => {
     }
 
     // Check if password is correct
-    const match = bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, user.password);
     if (!match) {
         res.status(401);
         throw new Error("Password is incorrect");
@@ -87,18 +91,30 @@ export const loginUser = asyncHandler(async (req, res) => {
     // Send token in httpOnly cookie
     res.status(200).cookie("accessToken", accessToken, {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         sameSite: "strict",
         maxAge: MAX_COOKIE_AGE
-    }).send();
+    }).json({ message: "OK" });
 });
 
 // @route POST /api/users/logout
 export const logoutUser = (req, res) => {
     res.status(200).clearCookie("accessToken", {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         sameSite: "strict",
         maxAge: MAX_COOKIE_AGE
+    }).json({ message: "OK" });
+};
+
+const createInitialSnapshot = async (user) => {
+    const initialSnapshot = {
+        stocks: [],
+        totalValue: STARTING_CASH
+    };
+
+    await SnapshotList.create({
+        userId: user._id,
+        list: [initialSnapshot]
     });
 };

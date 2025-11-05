@@ -11,9 +11,18 @@ const startAgenda = async () => {
 
     await agenda.start();
 
-    // Run jobs
-    agenda.every("30 minutes", "updateStockPrices");
-    agenda.every("3 hours", "takePortfolioSnapshots");
+    // Run jobs. Use NY Time and match the exchange open hours with
+    // a slight delay. Also delay snapshot taking by a bit to use the most 
+    // recent stock prices
+    agenda.every("50 9-16 * * 1-5", "updateStockPrices", {}, {
+        timezone: "America/New_York",
+        skipImmediate: true
+    });
+
+    agenda.every("58 9-16 * * 1-5", "takePortfolioSnapshots", {}, {
+        timezone: "America/New_York",
+        skipImmediate: true
+    });
 
     process.on("SIGTERM", () => graceful(agenda));
     process.on("SIGINT", () => graceful(agenda));

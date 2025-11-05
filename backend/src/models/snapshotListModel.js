@@ -5,8 +5,7 @@ const snapshotSchema = new mongoose.Schema({
         type: [{
             symbol: {
                 type: String, 
-                required: true,
-                unique: true
+                required: true
             },
             price: {
                 type: Number,

@@ -14,8 +14,7 @@ const userSchema = new mongoose.Schema({
         type: [{
             symbol: {
                 type: String,
-                required: true,
-                unique: true
+                required: true
             },
             shares: {
                 type: Number,
