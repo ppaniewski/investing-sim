@@ -2,8 +2,9 @@
     "name": "investing-sim",
     "private": true,
     "engines": { "node": "20.19.0" },
+    "workspaces": ["frontend", "backend"],
     "scripts": {
-        "build": "npm --prefix backend ci && npm --prefix frontend ci && npm --prefix frontend run build",
-        "start": "npm --prefix backend run start"
+        "build": "npm ci && npm run build -w frontend",
+        "start": "npm run start -w backend"
     }
 }
