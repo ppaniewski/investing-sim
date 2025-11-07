@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "build:frontend" : "cd ../frontend && npm ci && npm run build",
-    "build": "npm ci && npm run build:frontend",
+    "build": "npm run build:frontend",
     "dev": "nodemon server.js"
   },
   "author": "Patryk Paniewski",
