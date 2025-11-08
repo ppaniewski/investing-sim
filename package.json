@@ -1,7 +1,7 @@
 {
     "name": "investing-sim",
     "private": true,
-    "engines": { "node": "22.19.0" },
+    "engines": { "node": "20.19.0" },
     "workspaces": ["frontend", "backend"],
     "scripts": {
         "build": "npm ci && npm run build -w frontend",
