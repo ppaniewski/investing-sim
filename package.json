@@ -5,6 +5,7 @@
     "workspaces": ["frontend", "backend"],
     "scripts": {
         "build": "npm run build -w frontend",
+        "heroku-postbuild": "npm ci -w backend --omit=dev",
         "start": "npm run start -w backend"
     }
 }
