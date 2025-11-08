@@ -9,7 +9,7 @@ import userAuthenticator from "./loaders/authenticator"
 import loginRedirect from "./loaders/loginRedirect"
 import portfolioLoader from "./loaders/portfolioLoader";
 import stockLoader from "./loaders/stockLoader";
-import Layout from "./components/layout";
+import Layout from "./components/Layout";
 import Portfolio from "./components/Portfolio";
 import StockPage from "./components/StockPage";
 import Login from "./components/Login";
